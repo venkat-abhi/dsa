@@ -21,7 +21,7 @@ public:
 	T removeAt(int);
 
 	bool isEmpty();
-	bool remove(T);	// remove element T
+	bool remove(T);
 	bool contains(T);
 
 	int Size();
@@ -165,27 +165,7 @@ bool Array<T>::contains(T element)
 
 int main()
 {
-	Array<int> def;
 	Array<int> a(10);
-
-	// std::cout << "size of def: " << def.Size() << std::endl;
-	// std::cout << "size of a: " << a.Size() << std::endl;
-
-	// if (def.isEmpty()) {
-	// 	std::cout << "def arr empty" << std::endl;
-	// } else {
-	// 	std::cout << "def arr not empty" << std::endl;
-	// }
-
-	// a.set(8, 20);
-	// std::cout << "a[10]: " << a.get(8) << std::endl;
-
-	// a.clear();
-	// if (a.isEmpty()) {
-	// 	std::cout << "a arr empty" << std::endl;
-	// } else {
-	// 	std::cout << "a arr not empty" << std::endl;
-	// }
 
 	for (int i = 0; i < 100; ++i) {
 		a.add(i*2);
@@ -196,9 +176,6 @@ int main()
 	}
 
 	a.remove(6);
-	// for (int i = 0; i < 50; ++i) {
-	// 	std::cout << "a[" << i << "]: " << a.get(i) << std::endl;
-	// }
 	std::cout << a.contains(6) << std::endl;
 
 
