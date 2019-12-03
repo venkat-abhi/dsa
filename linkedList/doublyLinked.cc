@@ -125,7 +125,7 @@ void DoublyLinkedList<T>::addLast(T element)
 	DoublyLinkedList<T>::Node *node = new DoublyLinkedList<T>::Node(element, nullptr, nullptr);
 
 	// Add the node to the end of the linked list
-	if (isEmpty()) {
+	if (DoublyLinkedList<T>::isEmpty()) {
 		head = node;
 	} else {
 		tail->setNext(node);
@@ -167,7 +167,7 @@ T DoublyLinkedList<T>::peekFirst()
 template <typename T>
 T DoublyLinkedList<T>::peekLast()
 {
-	if (isEmpty()) {
+	if (DoublyLinkedList<T>::isEmpty()) {
 		throw std::runtime_error("Empty Linked List");
 	} else {
 		return tail->getData();
@@ -204,7 +204,7 @@ T DoublyLinkedList<T>::removeFirst()
 template <typename T>
 T DoublyLinkedList<T>::removeLast()
 {
-	if (isEmpty()) {
+	if (DoublyLinkedList<T>::isEmpty()) {
 		throw std::runtime_error("Empty Linked List");
 	}
 
@@ -215,7 +215,7 @@ T DoublyLinkedList<T>::removeLast()
 	delete last_node;
 	--len;
 
-	if (isEmpty()) {
+	if (DoublyLinkedList<T>::isEmpty()) {
 		head = nullptr;
 	} else {
 		tail->setNext(nullptr);
