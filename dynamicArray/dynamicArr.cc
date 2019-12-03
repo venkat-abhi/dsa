@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #define DEFAULT_SIZE 16
 
@@ -19,6 +20,8 @@ public:
 
 	T get(int);
 	T removeAt(int);
+
+	std::string toString();
 
 	bool isEmpty();
 	bool remove(T);
@@ -163,6 +166,25 @@ bool Array<T>::contains(T element)
 	return (Array::getIndex(element) != -1);
 }
 
+template <typename T>
+std::string Array<T>::toString()
+{
+	if (len == 0) {
+		return "[]";
+	} else {
+		std::string str;
+		str.push_back('[');
+		for (int i = 0; i < len-1; ++i) {
+			str += std::to_string(arr[i]);
+			str += ", ";
+		}
+		str += std::to_string(arr[len-1]);
+		str.push_back(']');
+
+		return str;
+	}
+}
+
 int main()
 {
 	Array<int> a(10);
@@ -177,6 +199,8 @@ int main()
 
 	a.remove(6);
 	std::cout << a.contains(6) << std::endl;
+
+	std::cout << a.toString() << std::endl;
 
 
 	return 0;
