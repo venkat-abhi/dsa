@@ -63,7 +63,7 @@ int Array<T>::Size()
 template <typename T>
 bool Array<T>::isEmpty()
 {
-	return Array::Size() == 0;
+	return Array<T>::Size() == 0;
 }
 
 
@@ -150,25 +150,25 @@ T Array<T>::removeAt(int index)
 template <typename T>
 bool Array<T>::remove(T element)
 {
-	int index = getIndex(element);
+	int index = Array<T>::getIndex(element);
 	if (index == -1) {
 		return false;
 	}
 
-	removeAt(index);
+	Array<T>::removeAt(index);
 	return true;
 }
 
 template <typename T>
 bool Array<T>::contains(T element)
 {
-	return (Array::getIndex(element) != -1);
+	return (Array<T>::getIndex(element) != -1);
 }
 
 template <typename T>
 std::string Array<T>::toString()
 {
-	if (len == 0) {
+	if (Array<T>::isEmpty()) {
 		return "[]";
 	} else {
 		std::string str;
