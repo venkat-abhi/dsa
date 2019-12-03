@@ -70,11 +70,10 @@ bool Array<T>::isEmpty()
 template <typename T>
 T Array<T>::get(int index)
 {
-	if (index >= 0 && index < size) {
-		return arr[index];
+	if (index < 0 || index >= size) {
+		throw std::out_of_range("Invalid Index");
 	}
-	// what do we return if index is out of bounds?
-	return T(NULL);
+	return arr[index];
 }
 
 template <typename T>
@@ -133,7 +132,7 @@ template <typename T>
 T Array<T>::removeAt(int index)
 {
 	if (index < 0 || index >= len) {
-		// throw exception
+		std::out_of_range("Invalid Index");
 	}
 
 	T ele = arr[index];
