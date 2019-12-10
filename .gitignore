@@ -1,17 +1,3 @@
-# Ignore everything except .cc and .h files (excluding main.cc)
-
-*
-
-!../dynamicArray/*.cc
-!dynamicArray/*.h
-
-!linkedList/*.cc
-!linkedList/*.h
-
-!queue/*.cc
-!queue/*.h
-
-!stack/*.cc
-!stack/*.h
-
+.vscode
+*/makefile
 */main.cc
