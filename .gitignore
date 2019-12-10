@@ -2,9 +2,16 @@
 
 *
 
-!*.cc
-!*.h
-!*/*.cc
-!*/*.h
+!../dynamicArray/*.cc
+!dynamicArray/*.h
+
+!linkedList/*.cc
+!linkedList/*.h
+
+!queue/*.cc
+!queue/*.h
+
+!stack/*.cc
+!stack/*.h
 
 */main.cc
