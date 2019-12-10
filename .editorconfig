@@ -1,0 +1,5 @@
+[*.cc]
+trim_trailing_whitespace = true
+
+[*.h]
+trim_trailing_whitespace = true
