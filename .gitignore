@@ -1,2 +1,8 @@
-*/*.vscode
+# Ignore everything except .cc and .h files (excluding main.cc)
+
+*
+
+!*/*.cc
+!*/*.h
+
 */main.cc
