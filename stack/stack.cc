@@ -1,7 +1,6 @@
 #include <iostream>
 #include <list>
 
-
 template <typename T>
 class Stack
 {
