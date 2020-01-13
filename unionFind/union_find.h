@@ -19,12 +19,12 @@ public:
 		}
 
 		this->size = size;
-		this->num_components = size;
+		num_components = size;
 
-		(this->id).resize(size);
-		(this->sz).resize(size);
-		std::iota((this->id).begin(), (this->id).end(), 0); // Link to itself (self root)
-		std::iota((this->sz).begin(), (this->sz).end(), 0); // Each component is initially of size one
+		id.resize(size);
+		sz.resize(size);
+		std::iota(id.begin(), id.end(), 0); // Link to itself (self root)
+		std::fill(sz.begin(), sz.end(), 1); // Each component is initially of size one
 
 	}
 
@@ -42,14 +42,15 @@ int UnionFind::find(int p)
 {
 	// Get the root of p
 	int root = p;
-	while (root != (this->id)[root]) {
-		root = (this->id)[root];
+	while (root != id[root]) {
+		root = id[root];
 	}
 
 	// perform path compression
 	while (p != root) {
-		int next = (this->id)[p];
-		(this->id)[p] = root;
+		std::cout << "p: " << p << std::endl;
+		int next = id[p];
+		id[p] = root;
 		p = next;
 	}
 
@@ -63,17 +64,17 @@ bool UnionFind::connected(int p, int q)
 
 int UnionFind::componentSize(int p)
 {
-	return (this->sz)[UnionFind::find(p)];
+	return sz[UnionFind::find(p)];
 }
 
 int UnionFind::Size()
 {
-	return this->size;
+	return size;
 }
 
 int UnionFind::components()
 {
-	return this->num_components;
+	return num_components;
 }
 
 void UnionFind::unify(int p, int q)
@@ -86,13 +87,13 @@ void UnionFind::unify(int p, int q)
 	}
 
 	// Merge smaller component into the larger one
-	if ((this->sz)[root1] < (this->sz)[root1]) {
-		(this->sz)[root2] += (this->sz)[root1];
-		(this->id)[root1] = root2;
+	if (sz[root1] < sz[root2]) {
+		sz[root2] += sz[root1];
+		id[root1] = root2;
 	} else {
-		(this->sz)[root1] += (this->sz)[root2];
-		(this->id)[root2] = root1;
+		sz[root1] += sz[root2];
+		id[root2] = root1;
 	}
 
-	--(this->num_components);
+	--num_components;
 }
