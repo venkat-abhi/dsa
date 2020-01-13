@@ -48,7 +48,6 @@ int UnionFind::find(int p)
 
 	// perform path compression
 	while (p != root) {
-		std::cout << "p: " << p << std::endl;
 		int next = id[p];
 		id[p] = root;
 		p = next;
