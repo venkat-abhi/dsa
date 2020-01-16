@@ -1,6 +1,4 @@
 #include <algorithm>
-#include <iostream>
-#include <cassert>
 
 template <typename T>
 class BinarySearchTree
@@ -210,22 +208,4 @@ template <typename T>
 int BinarySearchTree<T>::height()
 {
 	return Node::height(root_);
-}
-
-int main()
-{
-	BinarySearchTree<int> a;
-	a.add(10);
-	a.add(100);
-	a.add(9);
-	a.add(11);
-	a.add(2);
-
-	a.remove(10);
-	assert(3 == a.height());
-	a.remove(2);
-	assert(2 == a.height());
-	a.remove(7);
-	assert(2 == a.height());
-
 }
