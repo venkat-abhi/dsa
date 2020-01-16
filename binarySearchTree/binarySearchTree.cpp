@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <iostream>
-
+#include <cassert>
 
 template <typename T>
 class BinarySearchTree
@@ -14,28 +14,6 @@ private:
 		T data_;
 		Node *left_;
 		Node *right_;
-	public:
-		Node(T data, Node *left, Node *right):
-			data_{data}, left_{left}, right_{right}
-		{
-		}
-
-		void add(Node *node)
-		{
-			if (node->data_ < this->data_) { // add to the left sub tree
-				if (this->left_ != nullptr) {
-					this->left_->add(node);
-				} else {
-					this->left_ = node;
-				}
-			} else { // add to the right sub tree
-				if (this->right_ != nullptr) {
-					this->right_->add(node);
-				} else {
-					this->right_ = node;
-				}
-			}
-		}
 
 		Node* findMin(Node *node)
 		{
@@ -83,9 +61,32 @@ private:
 			}
 		}
 
+	public:
+		Node(T data, Node *left, Node *right):
+			data_{data}, left_{left}, right_{right}
+		{
+		}
+
+		void add(Node *node)
+		{
+			if (node->data_ < this->data_) { // add to the left sub tree
+				if (this->left_ != nullptr) {
+					this->left_->add(node);
+				} else {
+					this->left_ = node;
+				}
+			} else { // add to the right sub tree
+				if (this->right_ != nullptr) {
+					this->right_->add(node);
+				} else {
+					this->right_ = node;
+				}
+			}
+		}
+
 		void remove(T ele)
 		{
-			// ToDo: Refactor from using the this ptr in the current manner
+			// to do: Refactor from using the this ptr in the current manner
 			if (ele < this->data_) {
 				if (ele == this->left_->data_) {
 					// left child is the element to delete
@@ -131,15 +132,15 @@ private:
 			}
 		}
 
-		int height()
+		static int height(Node *node)
 		{
-			if (this == nullptr) {
+			if (node == nullptr) {
 				return 0;
 			}
 
 			return std::max(
-				Node::height(this->left_),
-				Node::height(this->right_)
+				Node::height(node->left_),
+				Node::height(node->right_)
 				) + 1;
 		}
 	};
@@ -208,7 +209,7 @@ bool BinarySearchTree<T>::isEmpty()
 template <typename T>
 int BinarySearchTree<T>::height()
 {
-	return root_->height();
+	return Node::height(root_);
 }
 
 int main()
@@ -220,6 +221,11 @@ int main()
 	a.add(11);
 	a.add(2);
 
+	a.remove(10);
+	assert(3 == a.height());
 	a.remove(2);
+	assert(2 == a.height());
 	a.remove(7);
+	assert(2 == a.height());
+
 }
